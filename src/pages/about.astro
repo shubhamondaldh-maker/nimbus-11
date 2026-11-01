@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="About Nimbus Cloudworks | Engineering & Mission" 
+  description="Learn about Nimbus Cloudworks, our cloud engineering culture, team values, and architecture philosophy."
+>
+  <div class="article-container">
+    <header class="about-header">
+      <div class="hero-pill">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        About Nimbus Cloudworks
+      </div>
+      <h1 class="hero-title" style="font-size: 2.5rem; margin-bottom: 1rem;">
+        Building lean, reliable cloud infrastructure.
+      </h1>
+      <p class="hero-description">
+        Nimbus Cloudworks is a specialized IT services and engineering consultancy. We partner with fast-growing companies to solve complex database bottlenecks, modernize CI/CD pipelines, and design resilient distributed architectures.
+      </p>
+    </header>
+
+    <div class="about-card">
+      <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem;">
+        Our Engineering Philosophy
+      </h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+        We don't chase buzzwords. We treat production systems with the rigor and simplicity they demand. Every dispatch on this blog reflects real operational challenges faced and resolved on live production clusters.
+      </p>
+
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-title">⚡ Fast Feedback Loops</div>
+          <div class="value-desc">
+            Slow pipelines stall developer momentum. We aggressively shave seconds off CI runs through dependency caching and test parallelization.
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-title">🔍 Data-Driven Root Causes</div>
+          <div class="value-desc">
+            We run <code>EXPLAIN ANALYZE</code> before reaching for caching layers. Proper indices and schema hygiene outlast temporary band-aids.
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-title">🛡️ Transparent Incidents</div>
+          <div class="value-desc">
+            During outages, clear communication and contemporaneous timelines replace speculation. We publish blameless retrospectives.
+          </div>
+        </div>
+
+        <div class="value-item">
+          <div class="value-title">🚀 Lightweight Architectures</div>
+          <div class="value-desc">
+            Our own systems — including this blog — are built with zero-overhead tooling like Astro and static markdown, ensuring sub-second load times worldwide.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-card">
+      <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem;">
+        Engineering Leadership
+      </h2>
+      <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+        The Nimbus engineering team is headed by <strong>Karan Mehta</strong>, Engineering Lead. Our distributed team of cloud architects, systems engineers, and database specialists operate across multiple regions to ensure round-the-clock reliability.
+      </p>
+      <div style="display: flex; gap: 1rem; align-items: center; margin-top: 1.25rem;">
+        <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--gradient-brand); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #0b0f19; font-size: 1.1rem;">
+          KM
+        </div>
+        <div>
+          <div style="font-weight: 700; color: var(--text-primary);">Karan Mehta</div>
+          <div style="font-size: 0.85rem; color: var(--accent-cyan); font-family: var(--font-mono);">Engineering Lead, Nimbus Cloudworks</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; padding: 2rem 0;">
+      <a href="/" class="read-more-link" style="font-size: 1.05rem;">
+        Browse our engineering dispatches &rarr;
+      </a>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('blog');
+
+// Sort newest first
+const posts = allPosts.sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<BaseLayout 
+  title="Nimbus Cloudworks | Engineering Blog" 
+  description="Technical insights, production lessons, and performance engineering from the cloud engineering team at Nimbus Cloudworks."
+>
+  <section class="hero-section">
+    <div class="hero-pill">
+      <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-emerald);"></span>
+      Nimbus Cloudworks Engineering Log
+    </div>
+    <h1 class="hero-title">Shipping resilient cloud systems & lean infrastructure.</h1>
+    <p class="hero-description">
+      Real-world engineering insights, query optimizations, incident playbooks, and architecture decisions written directly by our practitioners.
+    </p>
+  </section>
+
+  <section>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.75rem;">
+      <h2 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); letter-spacing: -0.01em;">
+        Latest Dispatches
+      </h2>
+      <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted);">
+        {posts.length} {posts.length === 1 ? 'article' : 'articles'} published
+      </span>
+    </div>
+
+    <div class="posts-list">
+      {posts.map((post) => (
+        <PostCard post={post} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

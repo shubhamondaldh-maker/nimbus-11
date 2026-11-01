@@ -1,0 +1,65 @@
+---
+interface Props {
+  post: {
+    id: string;
+    body?: string;
+    data: {
+      title: string;
+      description: string;
+      pubDate: Date;
+      author: string;
+      tags: string[];
+    };
+  };
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, author, tags } = post.data;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+}).format(pubDate);
+
+// Estimate read time based on word count
+const words = (post.body || description).split(/\s+/).length;
+const readTime = Math.max(1, Math.ceil(words / 200));
+---
+
+<article class="post-card">
+  <div class="post-card-header">
+    <time datetime={pubDate.toISOString()} class="post-card-date">
+      {formattedDate}
+    </time>
+    <span class="post-card-dot">•</span>
+    <span>{author}</span>
+    <span class="post-card-dot">•</span>
+    <span>{readTime} min read</span>
+  </div>
+
+  <h2 class="post-card-title">
+    <a href={`/posts/${post.id}`}>{title}</a>
+  </h2>
+
+  <p class="post-card-desc">{description}</p>
+
+  <div class="post-card-footer">
+    <div class="tag-list">
+      {tags.map((tag) => (
+        <a href={`/tags/${tag}`} class="tag-pill">
+          #{tag}
+        </a>
+      ))}
+    </div>
+
+    <a href={`/posts/${post.id}`} class="read-more-link" aria-label={`Read article: ${title}`}>
+      Read post 
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</article>
